@@ -26,6 +26,11 @@ package
 			Main.currentGame = this;
 			
 			_lanes = new Vector.<Lane>(Main.NB_LANES);
+			for (var i:int = 0; i < _lanes.length; i++)
+			{
+				_lanes[i] = new Lane();
+			}
+			
 			_stack = new Stack();
 			
 			view.addEventListener(Event.ENTER_FRAME, onFrame);
@@ -72,6 +77,15 @@ package
 				return;
 				
 			var estValide:Boolean = _stack.tryNumber(nombrePresse);
+			
+			if (estValide)
+			{
+				_vitesse++;
+			}
+			else
+			{
+				currentLane.closeALittleMore(_vitesse);
+			}
 		}
 		
 		/**

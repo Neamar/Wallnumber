@@ -13,6 +13,11 @@ package
 		
 		protected var _widthClosed:int = 0;
 
+		public function Lane()
+		{
+			Main.currentGame.view.addChild(view);
+		}
+		
 		/**
 		  * Ferme un peu plus la voie.
 		  * @param	v le delta de fermeture à ajouter
@@ -20,6 +25,7 @@ package
 		public function closeALittleMore(v:int):void
 		{
 			_widthClosed += v;
+			view.closeTo(_widthClosed);
 		}
 	}
 	

@@ -17,7 +17,7 @@ package design
 		{
 			addChild(tf);
 			tf.textColor = 0;
-			
+			//tf.y = Main.LANE_HEIGHT / 4;
 			this.scaleX = this.scaleY = 3;
 		}
 		
