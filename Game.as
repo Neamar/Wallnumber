@@ -44,7 +44,7 @@ package
 				addToScore(_vitesse);
 			}
 			
-
+			_stack.iterate(_vitesse);
 		}
 		/**
 		 * GETTERS / SETTERS

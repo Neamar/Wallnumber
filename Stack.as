@@ -17,6 +17,17 @@ package
 			for (var i:int = 0; i < _nbMovingNumbers; i++)
 			{
 				_movingNumbers[i] = new MovingNumber();
+				_movingNumbers[i].view.x = 0;
+				_movingNumbers[i].view.y = i * Main.LANE_HEIGHT;
+			}
+		}
+		
+		public function iterate(vitesse:int):void
+		{
+			_x += vitesse;
+			for (var i:int = 0; i < _nbMovingNumbers; i++)
+			{
+				_movingNumbers[i].view.x = _x / Math.pow(2,i);
 			}
 		}
 		

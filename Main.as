@@ -28,7 +28,7 @@
 		/**
 		 * La hauteur d'une voie
 		 */
-		public static const LANE_HEIGHT:int = GAME_HEIGHT / GAME_HEIGHT;
+		public static const LANE_HEIGHT:int = GAME_HEIGHT / NB_LANES;
 		
 		/**
 		 * La vitesse maximale que l'on puisse atteindre, au delà de laquelle on est bridé
