@@ -40,6 +40,11 @@
 		 */
 		public static const SPEED_DAMP:int = 50;
 		
+		/**
+		 * Nombre de frames par secondes
+		 */
+		public static const FRAME_RATE:int = 30;
+		
 		
 		public function Main():void 
 		{
