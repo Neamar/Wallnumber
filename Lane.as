@@ -8,7 +8,16 @@ package
 	 */
 	public class Lane
 	{
-		
+		protected var _widthClosed:int = 0;
+
+		/**
+		  * Ferme un peu plus la voie.
+		  * @param	v le delta de fermeture à ajouter
+		  */
+		public function closeALittleMore(v:int):void
+		{
+			_widthClosed += v;
+		}
 	}
 	
 }

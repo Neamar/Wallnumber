@@ -7,7 +7,7 @@ package
 	 */
 	public class MovingNumber
 	{
-		
+		protected var _value:int = Math.round(10 * Math.random());
 	}
 	
 }
