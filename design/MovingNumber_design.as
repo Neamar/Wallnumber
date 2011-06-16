@@ -21,6 +21,12 @@ package design
 			this.scaleX = this.scaleY = 3;
 		}
 		
+		public function destroy():void
+		{
+			removeChild(tf);
+			parent.removeChild(this);
+		}
+		
 		public function setNumber(v:int):void
 		{
 			tf.text = v.toString();

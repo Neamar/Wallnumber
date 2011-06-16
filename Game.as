@@ -55,12 +55,23 @@ package
 		{
 			var nombrePresse:int = -1;
 			
+			//Pavé numérique
 			if (e.keyCode >= 96 && e.keyCode <= 105)
 			{
 				nombrePresse = e.keyCode - 96;
 			}
 			
-			trace(e.keyCode);
+			//Au dessus d'AZERTY
+			if (e.keyCode >= 48 && e.keyCode <= 57)
+			{
+				nombrePresse = e.keyCode - 48;
+			}
+			
+			//Appui sur une touche non gérée
+			if (nombrePresse == -1)
+				return;
+				
+			var estValide:Boolean = _stack.tryNumber(nombrePresse);
 		}
 		
 		/**

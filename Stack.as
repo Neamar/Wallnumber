@@ -1,5 +1,6 @@
 package 
 {
+	import com.greensock.TweenLite;
 	
 	/**
 	 * La pile des nombres qui s'affichent
@@ -22,6 +23,36 @@ package
 			}
 		}
 		
+		/**
+		 * Essaie le nombre passé en paramètre et renvoie true s'il correspond au premier MovingNumber
+		 * @param	v
+		 * @return true si le nombre passé est correct
+		 */
+		public function tryNumber(v:int):Boolean
+		{
+			if (v == _movingNumbers[0].getValue())
+			{
+				var movingNumber:MovingNumber = _movingNumbers.shift();
+				movingNumber.destroy();
+				_movingNumbers.push(new MovingNumber());
+				
+				for (var i:int = 0; i < _nbMovingNumbers; i++)
+				{
+					TweenLite.to(_movingNumbers[i].view, .2, {y:i * Main.LANE_HEIGHT});
+				}
+				
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		
+		/**
+		 * Décale tous les numéros de quelques pixels
+		 * @param	vitesse
+		 */
 		public function iterate(vitesse:int):void
 		{
 			_x += vitesse;

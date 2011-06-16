@@ -17,6 +17,13 @@ package
 			Main.currentGame.view.addChild(view);
 			view.setNumber(_value);
 		}
+		
+		public function destroy():void
+		{
+			view.destroy();
+		}
+		
+		public function getValue():int { return _value; }
 	}
 	
 }
