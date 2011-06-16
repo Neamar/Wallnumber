@@ -14,13 +14,18 @@ package
 		protected var _score:int = 0;
 		private var _displayedScore:Number = 0;
 		protected var _vitesse:int = 1;
-		protected var _stack:Stack = new Stack();
-		protected var _lanes:Vector.<Lane> = new Vector.<Lane>(Main.NB_LANES);
+		protected var _stack:Stack;
+		protected var _lanes:Vector.<Lane>;
 		protected var _currentLane:int = 0;
 		protected var _frameNumber:int = 0;
 		
 		public function Game()
 		{
+			Main.currentGame = this;
+			
+			_lanes = new Vector.<Lane>(Main.NB_LANES);
+			_stack = new Stack();
+			
 			view.addEventListener(Event.ENTER_FRAME, onFrame);
 		}
 		/**
@@ -32,11 +37,14 @@ package
 			//Score affiché
 			setDisplayedScore(_displayedScore + (_score - _displayedScore) / 10);
 			_frameNumber = (_frameNumber + 1) % Main.FRAME_RATE;
+			
 			//Chaque seconde, le score augmente de la vitesse actuelle
 			if (_frameNumber == 0)
 			{
 				addToScore(_vitesse);
 			}
+			
+
 		}
 		/**
 		 * GETTERS / SETTERS

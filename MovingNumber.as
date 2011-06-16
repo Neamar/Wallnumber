@@ -10,7 +10,13 @@ package
 	{
 		public var view:MovingNumber_design = new MovingNumber_design();
 		
-		protected var _value:int = Math.round(10 * Math.random());
+		protected var _value:int = Math.floor(10 * Math.random());
+		
+		public function MovingNumber()
+		{
+			Main.currentGame.view.addChild(view);
+			view.setNumber(_value);
+		}
 	}
 	
 }

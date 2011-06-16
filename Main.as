@@ -45,6 +45,8 @@
 		 */
 		public static const FRAME_RATE:int = 30;
 		
+		public static var currentGame:Game;
+		
 		
 		public function Main():void 
 		{
@@ -57,7 +59,8 @@
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// Lancer un jeu !
 			
-			var jeu:Game = new Game();
+			new Game();
+			addChild(currentGame.view);
 		}
 		
 	}
