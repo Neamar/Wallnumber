@@ -27,6 +27,18 @@ package
 			_widthClosed += v;
 			view.closeTo(_widthClosed);
 		}
+		
+		/**
+		 * Ferme complètement la voie.
+		 * @param	m
+		 */
+		public function close(m:String):void
+		{
+			_widthClosed = Main.GAME_WIDTH;
+			closeALittleMore(0);
+		}
+		
+		public function getWidthClosed():int { return _widthClosed; }
 	}
 	
 }

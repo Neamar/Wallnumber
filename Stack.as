@@ -32,15 +32,7 @@ package
 		{
 			if (v == _movingNumbers[0].getValue())
 			{
-				var movingNumber:MovingNumber = _movingNumbers.shift();
-				movingNumber.destroy();
-				_movingNumbers.push(new MovingNumber());
-				
-				for (var i:int = 0; i < _nbMovingNumbers; i++)
-				{
-					TweenLite.to(_movingNumbers[i].view, .2, {y:i * Main.LANE_HEIGHT});
-				}
-				
+				shift();		
 				return true;
 			}
 			else
@@ -63,12 +55,39 @@ package
 		}
 		
 		/**
+		 * Supprime le nombre actuellement en tête
+		 */
+		public function shift():void
+		{
+			var movingNumber:MovingNumber = _movingNumbers.shift();
+			movingNumber.destroy();
+			movingNumber = null;
+			
+			movingNumber = new MovingNumber();
+			movingNumber.view.y = Main.GAME_HEIGHT + Main.LANE_HEIGHT;
+			_movingNumbers.push(movingNumber);
+			
+			for (var i:int = 0; i < _nbMovingNumbers; i++)
+			{
+				TweenLite.to(_movingNumbers[i].view, .2, {y:_y + i * Main.LANE_HEIGHT});
+			}
+			
+			//Ramener à la position correcte :
+			_x /= 2;
+		}
+		
+		/**
 		 * Descend le premier nombre une voie plus bas
 		 */
 		public function moveOneLaneDown():void
 		{
+			var movingNumber:MovingNumber = _movingNumbers.shift();
+			movingNumber.destroy();
+			_nbMovingNumbers--;
 			_y += Main.LANE_HEIGHT;
 		}
+		
+		public function getX():int { return _x; }
 	}
 	
 }

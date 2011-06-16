@@ -29,6 +29,7 @@ package
 			for (var i:int = 0; i < _lanes.length; i++)
 			{
 				_lanes[i] = new Lane();
+				_lanes[i].view.y = i * Main.LANE_HEIGHT;
 			}
 			
 			_stack = new Stack();
@@ -37,6 +38,7 @@ package
 			
 			mainStage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		}
+		
 		/**
 		 * Sur chaque Frame distribuée par Flash
 		 * @param	e
@@ -54,6 +56,22 @@ package
 			}
 			
 			_stack.iterate(_vitesse);
+			
+			if (Main.GAME_WIDTH - currentLane.getWidthClosed() < _stack.getX())
+			{
+				//Perte d'une voie
+				currentLane.close('FAIL');
+				_stack.shift();
+				_stack.moveOneLaneDown();
+				
+				_currentLane++;
+				
+				if (_currentLane >= _lanes.length)
+				{
+					//Fin du jeu !
+					throw new Error('Fin du jeu ! Score : ' + _score);
+				}
+			}
 		}
 		
 		public function onKeyPress(e:KeyboardEvent):void
