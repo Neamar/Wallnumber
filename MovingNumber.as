@@ -5,7 +5,7 @@ package
 	 * Un nombre qui s'affiche
 	 * @author Neamar
 	 */
-	public class Number
+	public class MovingNumber
 	{
 		
 	}

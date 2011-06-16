@@ -4,10 +4,10 @@ package
 	
 	/**
 	 * Le design d'un nombre
-	 * @see Number
+	 * @see MovingNumber
 	 * @author Neamar
 	 */
-	public class Number_design extends MovieClip 
+	public class MovingNumber_design extends MovieClip 
 	{
 		
 	}
