@@ -1,5 +1,6 @@
 package 
 {
+	import design.Lane_design;
 	
 	/**
 	 * Une voie pour le jeu.
@@ -8,6 +9,8 @@ package
 	 */
 	public class Lane
 	{
+		public var view:Lane_design = new Lane_design();
+		
 		protected var _widthClosed:int = 0;
 
 		/**

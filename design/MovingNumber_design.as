@@ -1,4 +1,4 @@
-package 
+package design
 {
 	import flash.display.MovieClip;
 	

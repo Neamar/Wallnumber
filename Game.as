@@ -1,5 +1,6 @@
 package 
 {
+	import design.Game_design;
 	
 	/**
 	 * Une partie (un jeu) de Wallnumber
@@ -7,6 +8,8 @@ package
 	 */
 	public class Game
 	{
+		public var view:Game_design = new Game_design();
+		
 		protected var _score:int = 0;
 		private var _displayedScore:int = 0;
 		protected var _vitesse:int = 0;
