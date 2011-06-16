@@ -38,7 +38,7 @@
 		/**
 		 * Le facteur de perte de vitesse lorsque l'on perd une voie (< 1 pour ralentir le jeu)
 		 */
-		public static const SPEED_DAMP:int = 50;
+		public static const SPEED_DAMP:Number = .75;
 		
 		/**
 		 * Nombre de frames par secondes

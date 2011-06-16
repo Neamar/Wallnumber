@@ -1,6 +1,8 @@
 package 
 {
+	import com.greensock.TweenLite;
 	import design.Game_design;
+	import design.Hud_design;
 	import flash.display.Stage;
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
@@ -20,6 +22,7 @@ package
 		protected var _lanes:Vector.<Lane>;
 		protected var _currentLane:int = 0;
 		protected var _frameNumber:int = 0;
+		protected var _hud:Hud_design;
 		
 		public function Game(mainStage:Stage)
 		{
@@ -35,8 +38,12 @@ package
 			_stack = new Stack();
 			
 			view.addEventListener(Event.ENTER_FRAME, onFrame);
-			
 			mainStage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+			
+			_hud = new Hud_design();
+			view.addChild(_hud);
+			addToScore(0);
+			vitesse = 1;
 		}
 		
 		/**
@@ -46,16 +53,18 @@ package
 		public function onFrame(e:Event = null):void
 		{
 			//Score affiché
-			setDisplayedScore(_displayedScore + (_score - _displayedScore) / 10);
 			_frameNumber = (_frameNumber + 1) % Main.FRAME_RATE;
 			
 			//Chaque seconde, le score augmente de la vitesse actuelle
 			if (_frameNumber == 0)
 			{
-				addToScore(_vitesse);
+				addToScore(vitesse);
 			}
 			
-			_stack.iterate(_vitesse);
+			if (_frameNumber % 3)
+			{
+				_stack.iterate(vitesse);
+			}
 			
 			if (Main.GAME_WIDTH - currentLane.getWidthClosed() < _stack.getX())
 			{
@@ -63,6 +72,8 @@ package
 				currentLane.close('FAIL');
 				_stack.shift();
 				_stack.moveOneLaneDown();
+				
+				vitesse *= Main.SPEED_DAMP;
 				
 				_currentLane++;
 				
@@ -98,11 +109,11 @@ package
 			
 			if (estValide)
 			{
-				_vitesse++;
+				vitesse++;
 			}
 			else
 			{
-				currentLane.closeALittleMore(_vitesse);
+				currentLane.closeALittleMore(vitesse);
 			}
 		}
 		
@@ -114,13 +125,23 @@ package
 		public function addToScore(v:int):void
 		{
 			_score += v;
+			TweenLite.to(this, 1, { displayedScore:_score } );
 		}
 		
 		public function get currentLane():Lane { return _lanes[_currentLane]; }
 		
-		public function setDisplayedScore(value:Number):void 
+		public function get displayedScore():Number { return _displayedScore; }
+		public function set displayedScore(value:Number):void 
 		{
 			_displayedScore = value;
+			_hud.setScore(_displayedScore);
+		}
+		
+		public function get vitesse():int { return _vitesse; }
+		public function set vitesse(v:int):void
+		{
+			_vitesse = v;
+			_hud.setVitesse(v);
 		}
 	}
 	
