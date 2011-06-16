@@ -1,7 +1,9 @@
 package 
 {
 	import design.Game_design;
+	import flash.display.Stage;
 	import flash.events.Event;
+	import flash.events.KeyboardEvent;
 	
 	/**
 	 * Une partie (un jeu) de Wallnumber
@@ -19,7 +21,7 @@ package
 		protected var _currentLane:int = 0;
 		protected var _frameNumber:int = 0;
 		
-		public function Game()
+		public function Game(mainStage:Stage)
 		{
 			Main.currentGame = this;
 			
@@ -27,6 +29,8 @@ package
 			_stack = new Stack();
 			
 			view.addEventListener(Event.ENTER_FRAME, onFrame);
+			
+			mainStage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		}
 		/**
 		 * Sur chaque Frame distribuée par Flash
@@ -46,6 +50,19 @@ package
 			
 			_stack.iterate(_vitesse);
 		}
+		
+		public function onKeyPress(e:KeyboardEvent):void
+		{
+			var nombrePresse:int = -1;
+			
+			if (e.keyCode >= 96 && e.keyCode <= 105)
+			{
+				nombrePresse = e.keyCode - 96;
+			}
+			
+			trace(e.keyCode);
+		}
+		
 		/**
 		 * GETTERS / SETTERS
 		 */

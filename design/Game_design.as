@@ -9,7 +9,11 @@ package design
 	 */
 	public class Game_design extends MovieClip
 	{
-		
+		public function Game_design()
+		{
+			this.graphics.beginFill(0xFF0000);
+			this.graphics.drawRect(0, 0, Main.GAME_WIDTH, Main.GAME_HEIGHT);
+		}
 	}
 	
 }

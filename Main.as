@@ -23,7 +23,7 @@
 		/**
 		 * Le nombre de voies sur le jeu (grosso modo, un équivalent du nombre de vies)
 		 */
-		public static const NB_LANES:int = 10;
+		public static const NB_LANES:int = 5;
 		
 		/**
 		 * La hauteur d'une voie
@@ -59,7 +59,7 @@
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// Lancer un jeu !
 			
-			new Game();
+			new Game(stage);
 			addChild(currentGame.view);
 		}
 		

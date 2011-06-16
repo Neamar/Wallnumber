@@ -2,6 +2,7 @@ package design
 {
 	import flash.display.MovieClip;
 	import flash.text.TextField;
+	import flash.text.TextFormat;
 	
 	/**
 	 * Le design d'un nombre
@@ -16,6 +17,8 @@ package design
 		{
 			addChild(tf);
 			tf.textColor = 0;
+			
+			this.scaleX = this.scaleY = 3;
 		}
 		
 		public function setNumber(v:int):void
