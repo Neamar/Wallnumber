@@ -1,6 +1,7 @@
 ﻿package 
 {
 	import flash.display.Sprite;
+	import flash.display.Stage;
 	import flash.events.Event;
 	
 	/**
@@ -45,8 +46,10 @@
 		 */
 		public static const FRAME_RATE:int = 30;
 		
+		/**
+		 * Le jeu en cours
+		 */
 		public static var currentGame:Game;
-		
 		
 		public function Main():void 
 		{

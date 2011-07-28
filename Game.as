@@ -23,6 +23,7 @@ package
 		protected var _currentLane:int = 0;
 		protected var _frameNumber:int = 0;
 		protected var _hud:Hud_design;
+		protected var _stage:Stage;
 		
 		public function Game(mainStage:Stage)
 		{
@@ -38,7 +39,9 @@ package
 			_stack = new Stack();
 			
 			view.addEventListener(Event.ENTER_FRAME, onFrame);
+			view.focusRect = false;
 			mainStage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+			this._stage = mainStage;
 			
 			_hud = new Hud_design();
 			view.addChild(_hud);
@@ -109,6 +112,7 @@ package
 			
 			if (estValide)
 			{
+				this._stage.focus = this.view;
 				vitesse++;
 			}
 			else
