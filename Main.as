@@ -68,6 +68,9 @@
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// Lancer un jeu !
 			setupNewGame();
+			
+			//Préparer les highscores
+			MochiServices.connect("c0066d922623e3a8", this);
 		}
 		
 		protected function setupNewGame():void
@@ -85,8 +88,10 @@
 		}
 		
 		protected function registerHighscore(e:Event):void
-		{
-			trace(currentGame.score);
+		{		
+			var o:Object = { n: [3, 12, 15, 14, 13, 6, 14, 10, 3, 12, 13, 5, 13, 8, 13, 9], f: function (i:Number,s:String):String { if (s.length == 16) return s; return this.f(i+1,s + this.n[i].toString(16));}};
+			var boardID:String = o.f(0,"");
+			MochiScores.showLeaderboard({boardID: boardID, score: currentGame.score, onClose:setupNewGame});
 		}
 	}
 	
