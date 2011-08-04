@@ -5,14 +5,17 @@ package
 	import design.Hud_design;
 	import flash.display.Stage;
 	import flash.events.Event;
+	import flash.events.EventDispatcher;
 	import flash.events.KeyboardEvent;
 	
 	/**
 	 * Une partie (un jeu) de Wallnumber
 	 * @author Neamar
 	 */
-	public class Game
+	public class Game extends EventDispatcher
 	{
+		public static const GAMEOVER:String = "gameOver";
+		
 		public var view:Game_design = new Game_design();
 		
 		protected var _score:int = 0;
@@ -27,8 +30,10 @@ package
 		
 		public function Game(mainStage:Stage)
 		{
+			//Il faut directement enregistrer le jeu en cours, sinon on risque d'avoir des problèmes à la constructions des sous objets.
+			//Cette architecture permet cependant d'éviter de passer des paramètres à outrance.
 			Main.currentGame = this;
-			
+
 			_lanes = new Vector.<Lane>(Main.NB_LANES);
 			for (var i:int = 0; i < _lanes.length; i++)
 			{
@@ -83,11 +88,15 @@ package
 				if (_currentLane >= _lanes.length)
 				{
 					//Fin du jeu !
-					throw new Error('Fin du jeu ! Score : ' + _score);
+					endGame();
 				}
 			}
 		}
 		
+		/**
+		 * As-tu appuyé sur la bonne touche ?
+		 * @param	e
+		 */
 		public function onKeyPress(e:KeyboardEvent):void
 		{
 			var nombrePresse:int = -1;
@@ -117,11 +126,21 @@ package
 			}
 			else
 			{
-				currentLane.closeALittleMore(vitesse);
+				currentLane.closeALittleMore(Main.LANE_FACTOR * vitesse);
 			}
 		}
 		
 		/**
+		 * C'est la fin de la partie les loulou !
+		 */
+		protected function endGame():void
+		{
+			view.removeEventListener(Event.ENTER_FRAME, onFrame);
+			_stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+			dispatchEvent(new Event(Game.GAMEOVER));
+		}
+		
+		/*
 		 * GETTERS / SETTERS
 		 */
 		public function get score():int { return _score; }

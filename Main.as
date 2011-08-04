@@ -3,13 +3,14 @@
 	import flash.display.Sprite;
 	import flash.display.Stage;
 	import flash.events.Event;
+	import mochi.as3.*;
 	
 	/**
 	 * Wallnumber
 	 * @author Neamar
 	 * @see https://github.com/Neamar/Wallnumber/
 	 */
-	public class Main extends Sprite 
+	public dynamic class Main extends Sprite 
 	{
 		/**
 		 * Largeur du jeu (px)
@@ -47,9 +48,14 @@
 		public static const FRAME_RATE:int = 30;
 		
 		/**
+		 * Multiplisateur pour la fermeture d'une voie
+		 */
+		public static const LANE_FACTOR:int = 5;
+		
+		/**
 		 * Le jeu en cours
 		 */
-		public static var currentGame:Game;
+		public static var currentGame:Game = null;
 		
 		public function Main():void 
 		{
@@ -61,11 +67,27 @@
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// Lancer un jeu !
+			setupNewGame();
+		}
+		
+		protected function setupNewGame():void
+		{
+			//Nettoyer l'ancienne partie
+			if (currentGame != null)
+			{
+				removeChild(currentGame.view);
+				currentGame.removeEventListener(Game.GAMEOVER, registerHighscore);
+			}
 			
-			new Game(stage);
+			currentGame = new Game(stage);
+			currentGame.addEventListener(Game.GAMEOVER, registerHighscore);
 			addChild(currentGame.view);
 		}
 		
+		protected function registerHighscore(e:Event):void
+		{
+			trace(currentGame.score);
+		}
 	}
 	
 }
