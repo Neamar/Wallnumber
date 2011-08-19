@@ -12,7 +12,7 @@ package
 	 * Une partie (un jeu) de Wallnumber
 	 * @author Neamar
 	 */
-	public class Game extends EventDispatcher
+	public final class Game extends EventDispatcher
 	{
 		public static const GAMEOVER:String = "gameOver";
 		

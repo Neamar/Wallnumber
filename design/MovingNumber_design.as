@@ -9,7 +9,7 @@ package design
 	 * @see MovingNumber
 	 * @author Neamar
 	 */
-	public class MovingNumber_design extends MovieClip 
+	public final class MovingNumber_design extends MovieClip 
 	{
 		protected var tf:TextField = new TextField();
 		

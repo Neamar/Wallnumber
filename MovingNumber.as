@@ -6,7 +6,7 @@ package
 	 * Un nombre qui s'affiche
 	 * @author Neamar
 	 */
-	public class MovingNumber
+	public final class MovingNumber
 	{
 		public static function getRandomValue():int { return Math.floor(10 * Math.random()); }
 

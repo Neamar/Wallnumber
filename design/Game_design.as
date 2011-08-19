@@ -7,7 +7,7 @@ package design
 	 * @see Game.as
 	 * @author Neamar
 	 */
-	public class Game_design extends MovieClip
+	public final class Game_design extends MovieClip
 	{
 		public function Game_design()
 		{

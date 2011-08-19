@@ -6,7 +6,7 @@ package
 	 * La pile des nombres qui s'affichent
 	 * @author Neamar
 	 */
-	public class Stack
+	public final class Stack
 	{
 		protected var _movingNumbers:Vector.<MovingNumber> = new Vector.<MovingNumber>(Main.NB_LANES);
 		protected var _nbMovingNumbers:int = Main.NB_LANES;
@@ -48,9 +48,25 @@ package
 		public function iterate(vitesse:int):void
 		{
 			_x += vitesse;
+			
+			//l'abscisse à atteindre.
+			var objectiveX:int;
+			//l'abscisse actuelle
+			var currentX:int;
 			for (var i:int = 0; i < _nbMovingNumbers; i++)
 			{
-				_movingNumbers[i].view.x = _x / Math.pow(2,i);
+				objectiveX = _x / Math.pow(2, i);
+				currentX = _movingNumbers[i].view.x;
+				if (objectiveX > currentX)
+				{
+					//Les choses avancent !
+					_movingNumbers[i].view.x = objectiveX;
+				}
+				else
+				{
+					//Il faut faire reculer le chariot, mais pas trop rapidement pour ne pas avoir d'animation saccadée
+					_movingNumbers[i].view.x = objectiveX + 1.5 * (currentX - objectiveX) / 2
+				}
 			}
 		}
 		
@@ -75,7 +91,6 @@ package
 		 */
 		public function moveOneLaneDown():void
 		{
-			
 			var movingNumber:MovingNumber = _movingNumbers.shift();
 			movingNumber.destroy();
 			_nbMovingNumbers--;

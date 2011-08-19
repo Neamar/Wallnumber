@@ -7,7 +7,7 @@ package design
 	 * @see Lane.as
 	 * @author Neamar
 	 */
-	public class Lane_design extends MovieClip 
+	public final class Lane_design extends MovieClip 
 	{
 		public function closeTo(v:int):void
 		{

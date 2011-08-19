@@ -10,7 +10,7 @@
 	 * @author Neamar
 	 * @see https://github.com/Neamar/Wallnumber/
 	 */
-	public dynamic class Main extends Sprite 
+	public final dynamic class Main extends Sprite 
 	{
 		/**
 		 * Largeur du jeu (px)

@@ -8,7 +8,7 @@ package design
 	 * Le panneau de score
 	 * @author Neamar
 	 */
-	public class Hud_design extends MovieClip
+	public final class Hud_design extends MovieClip
 	{
 		protected var tf:TextField = new TextField();
 		protected var _score:int = 0;

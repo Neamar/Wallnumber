@@ -7,7 +7,7 @@ package
 	 * Le nombre de voies est défini par Main.NB_LANES
 	 * @author Neamar
 	 */
-	public class Lane
+	public final class Lane
 	{
 		public var view:Lane_design = new Lane_design();
 		
