@@ -78,7 +78,6 @@ package
 			{
 				//Perte d'une voie
 				currentLane.close('FAIL');
-				_stack.shift();
 				_stack.moveOneLaneDown();
 				
 				vitesse *= Main.SPEED_DAMP;

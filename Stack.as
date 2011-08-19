@@ -59,21 +59,15 @@ package
 		 */
 		public function shift():void
 		{
-			var movingNumber:MovingNumber = _movingNumbers.shift();
-			movingNumber.destroy();
-			movingNumber = null;
-			
-			movingNumber = new MovingNumber();
-			movingNumber.view.y = Main.GAME_HEIGHT + Main.LANE_HEIGHT;
-			_movingNumbers.push(movingNumber);
-			
-			for (var i:int = 0; i < _nbMovingNumbers; i++)
+			//Décaler tous les numéros d'un cran
+			for (var i:int = 0; i < _nbMovingNumbers - 1; i++)
 			{
-				TweenLite.to(_movingNumbers[i].view, .2, {y:_y + i * Main.LANE_HEIGHT});
+				_movingNumbers[i].setValue(_movingNumbers[i + 1].getValue());
 			}
+			//Et inventer un nouveau numéro pour le petit dernier :
+			_movingNumbers[i].setValue(MovingNumber.getRandomValue());
 			
-			//Ramener à la position correcte :
-			_x /= 2;
+			calmDown();
 		}
 		
 		/**
@@ -81,13 +75,25 @@ package
 		 */
 		public function moveOneLaneDown():void
 		{
+			
 			var movingNumber:MovingNumber = _movingNumbers.shift();
 			movingNumber.destroy();
 			_nbMovingNumbers--;
 			_y += Main.LANE_HEIGHT;
+			
+			calmDown();
 		}
 		
 		public function getX():int { return _x; }
+		
+		/**
+		 * Ramène à la position correcte après la perte d'une voie, ou quand on a validé correctement un numéro.
+		 */
+		protected function calmDown():void
+		{
+			//Ramener à la position correcte :
+			_x /= 2;
+		}
 	}
 	
 }
