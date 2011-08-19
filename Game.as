@@ -99,8 +99,10 @@ package
 		 */
 		public function onKeyPress(e:KeyboardEvent):void
 		{
+			/*
+			 * Convertir le keyCode pour récupérer la touche appuyée.
+			 */
 			var nombrePresse:int = -1;
-			
 			//Pavé numérique
 			if (e.keyCode >= 96 && e.keyCode <= 105)
 			{

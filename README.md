@@ -1,7 +1,7 @@
 Wallnumber
 ==========
 
-Jeu rapide développé par Neamar<neamar@neamar.fr>.
+Jeu rapide développé par Neamar (<neamar@neamar.fr>).
 
 Graphismes par Licoti.
 

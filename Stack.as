@@ -32,7 +32,7 @@ package
 		{
 			if (v == _movingNumbers[0].getValue())
 			{
-				shift();		
+				shift();
 				return true;
 			}
 			else
