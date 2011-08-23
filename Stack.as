@@ -19,7 +19,7 @@ package
 			{
 				_movingNumbers[i] = new MovingNumber();
 				_movingNumbers[i].view.x = 0;
-				_movingNumbers[i].view.y = i * Main.LANE_HEIGHT;
+				_movingNumbers[i].view.y = (i + .5) * Main.LANE_HEIGHT;
 			}
 		}
 		

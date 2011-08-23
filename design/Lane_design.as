@@ -5,6 +5,9 @@ package design
 	
 	/**
 	 * Le design d'une voie
+	 * 
+	 * L'image est centrée verticalement de façon à avoir (x,0) au milieu.
+	 * 
 	 * @see Lane.as
 	 * @author Neamar
 	 */
@@ -15,6 +18,7 @@ package design
 		public function Lane_design()
 		{
 			var LB:Bitmap = new LaneBitmap();
+			LB.y = - LB.height / 2;
 			addChild(LB);
 		}
 		

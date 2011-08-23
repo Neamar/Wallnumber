@@ -38,7 +38,7 @@ package
 			for (var i:int = 0; i < _lanes.length; i++)
 			{
 				_lanes[i] = new Lane();
-				_lanes[i].view.y = i * Main.LANE_HEIGHT;
+				_lanes[i].view.y = (i + .5) * Main.LANE_HEIGHT;
 			}
 			
 			_stack = new Stack();
