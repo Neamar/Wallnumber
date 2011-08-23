@@ -18,7 +18,7 @@ package
 			for (var i:int = 0; i < _nbMovingNumbers; i++)
 			{
 				_movingNumbers[i] = new MovingNumber();
-				_movingNumbers[i].view.x = 0;
+				_movingNumbers[i].view.x = Main.LANE_OFFSETX;
 				_movingNumbers[i].view.y = (i + .5) * Main.LANE_HEIGHT;
 			}
 		}
@@ -56,16 +56,16 @@ package
 			for (var i:int = 0; i < _nbMovingNumbers; i++)
 			{
 				objectiveX = _x / Math.pow(2, i);
-				currentX = _movingNumbers[i].view.x;
+				currentX = _movingNumbers[i].view.x - Main.LANE_OFFSETX;
 				if (objectiveX > currentX)
 				{
 					//Les choses avancent !
-					_movingNumbers[i].view.x = objectiveX;
+					_movingNumbers[i].view.x = Main.LANE_OFFSETX + objectiveX;
 				}
 				else
 				{
 					//Il faut faire reculer le chariot, mais pas trop rapidement pour ne pas avoir d'animation saccadée
-					_movingNumbers[i].view.x = objectiveX + 1.5 * (currentX - objectiveX) / 2
+					_movingNumbers[i].view.x = Main.LANE_OFFSETX + objectiveX + 1.5 * (currentX - objectiveX) / 2
 				}
 			}
 		}

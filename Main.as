@@ -55,9 +55,14 @@
 		public static const FRAME_RATE:int = 30;
 		
 		/**
-		 * Multiplisateur pour la fermeture d'une voie
+		 * Multiplicateur pour la fermeture d'une voie
 		 */
 		public static const LANE_FACTOR:int = 5;
+		
+		/**
+		 * La partie "non" utilisable d'une voie.
+		 */
+		public static const LANE_OFFSETX:int = 80;
 		
 		/**
 		 * Le jeu en cours

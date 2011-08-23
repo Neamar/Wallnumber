@@ -74,14 +74,14 @@ package
 				_stack.iterate(vitesse);
 			}
 			
-			if (Main.GAME_WIDTH - currentLane.getWidthClosed() < _stack.getX())
+			if (Main.GAME_WIDTH - currentLane.getWidthClosed() - Main.LANE_OFFSETX < _stack.getX())
 			{
 				//Perte d'une voie
 				currentLane.close('FAIL');
 				_stack.moveOneLaneDown();
 				
 				vitesse *= Main.SPEED_DAMP;
-				
+				vitesse = Math.max(vitesse, 1);
 				_currentLane++;
 				
 				if (_currentLane >= _lanes.length)
