@@ -16,6 +16,8 @@ package design
 		
 		public function Hud_design()
 		{
+			this.y = -Main.HUD_HEIGHT;
+			
 			addChild(tf);
 			tf.textColor = 0;
 			tf.selectable = false;

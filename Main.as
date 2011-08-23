@@ -12,7 +12,7 @@
 	 */
 	public final dynamic class Main extends Sprite 
 	{
-		[Embed(source = "assets/fond.png")] private static var Background:Class;
+		[Embed(source = "assets/back.png")] private static var Background:Class;
 		
 		/**
 		 * Largeur du jeu (px)
@@ -30,9 +30,14 @@
 		public static const NB_LANES:int = 5;
 		
 		/**
+		 * La hauteur du HUD
+		 */
+		public static const HUD_HEIGHT:int = 75;
+		
+		/**
 		 * La hauteur d'une voie
 		 */
-		public static const LANE_HEIGHT:int = GAME_HEIGHT / NB_LANES;
+		public static const LANE_HEIGHT:int = (GAME_HEIGHT - HUD_HEIGHT) / NB_LANES;
 		
 		/**
 		 * La vitesse maximale que l'on puisse atteindre, au delà de laquelle on est bridé

@@ -11,7 +11,7 @@ package design
 	{
 		public function Game_design()
 		{
-
+			this.y = Main.HUD_HEIGHT;
 		}
 	}
 	
