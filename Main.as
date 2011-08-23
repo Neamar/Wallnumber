@@ -12,6 +12,8 @@
 	 */
 	public final dynamic class Main extends Sprite 
 	{
+		[Embed(source = "assets/fond.png")] private static var Background:Class;
+		
 		/**
 		 * Largeur du jeu (px)
 		 */
@@ -66,6 +68,10 @@
 		private function init(e:Event = null):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
+			
+			//Un joli fond
+			addChild(new Background());
+			
 			// Lancer un jeu !
 			setupNewGame();
 			
