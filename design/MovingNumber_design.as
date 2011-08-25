@@ -50,7 +50,7 @@ package design
 			CB.x = - CB.width / 2;
 			CB.y = - CB.height / 2;
 			
-			laneNumber = staticLaneNumber++;
+			laneNumber = (staticLaneNumber++) % Main.NB_LANES;
 		}
 		
 		public function destroy():void

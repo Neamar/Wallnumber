@@ -98,7 +98,7 @@
 				currentGame.removeEventListener(Game.GAMEOVER, registerHighscore);
 			}
 			
-			currentGame = new Game(stage);
+			currentGame = new Game(this.stage);
 			currentGame.addEventListener(Game.GAMEOVER, registerHighscore);
 			addChild(currentGame.view);
 		}
