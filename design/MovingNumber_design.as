@@ -19,9 +19,18 @@ package design
 	public final class MovingNumber_design extends MovieClip 
 	{
 		[Embed(source = "../assets/car.png")] private static var CarBitmap:Class;
+		[Embed(source = "../assets/numbers/0.png")] private static var Number0:Class;
+		[Embed(source = "../assets/numbers/1.png")] private static var Number1:Class;
+		[Embed(source = "../assets/numbers/2.png")] private static var Number2:Class;
+		[Embed(source = "../assets/numbers/3.png")] private static var Number3:Class;
+		[Embed(source = "../assets/numbers/4.png")] private static var Number4:Class;
+		[Embed(source = "../assets/numbers/5.png")] private static var Number5:Class;
+		[Embed(source = "../assets/numbers/6.png")] private static var Number6:Class;
+		[Embed(source = "../assets/numbers/7.png")] private static var Number7:Class;
 		[Embed(source = "../assets/numbers/8.png")] private static var Number8:Class;
-		
-		protected static var number:int = 0;
+		[Embed(source = "../assets/numbers/9.png")] private static var Number9:Class;
+		protected static var numbers:Array = [Number0, Number1, Number2, Number3, Number4, Number5, Number6, Number7, Number8, Number9];
+		protected static var staticLaneNumber:int = 0;
 		
 		protected static var colors:Array = [
 			[0xff0000, 0xc96565],
@@ -31,7 +40,8 @@ package design
 			[0xe616df, 0xbd6bba]
 		];
 		
-		protected var tf:TextField = new TextField();
+		protected var laneNumber:int;
+		protected var currentNumber:Bitmap = null;
 	
 		public function MovingNumber_design()
 		{
@@ -40,32 +50,7 @@ package design
 			CB.x = - CB.width / 2;
 			CB.y = - CB.height / 2;
 			
-			var strongColor:int = colors[number][0];
-			var weakColor:int = colors[number][1];
-			
-			var VB:Bitmap = new Number8();
-			var CT:ColorTransform = new ColorTransform(1, 1, 1, 1, (strongColor >> 16) & 0xFF, (strongColor >> 8) & 0xFF, strongColor & 0xFF);
-			VB.bitmapData.colorTransform(VB.bitmapData.rect, CT);
-			
-			VB.filters = [
-				new GlowFilter(strongColor, .4, 12, 12, 2),
-				//new GlowFilter(strongColor, .7, 6, 6, 1, 1, true)
-				new DropShadowFilter(2, 90, weakColor, 1, 0, 0, 1, 1, true),
-			];
-			addChild(VB);
-			VB.x = - 4 - VB.width / 2;
-			VB.y = - VB.height / 2;
-			
-			//addChild(tf);
-			tf.textColor = 0;
-			tf.selectable = false;
-			tf.scaleX = tf.scaleY = 3;
-			tf.textColor = 0xffffff;
-			
-			tf.y = CB.y;
-			tf.x = -20;
-			
-			number++;
+			laneNumber = staticLaneNumber++;
 		}
 		
 		public function destroy():void
@@ -76,7 +61,27 @@ package design
 		
 		public function setNumber(v:int):void
 		{
-			tf.text = v.toString();
+			if (currentNumber != null) {
+				removeChild(currentNumber);
+			}
+			
+			var strongColor:int = colors[laneNumber][0];
+			var weakColor:int = colors[laneNumber][1];
+			
+			currentNumber = new numbers[v]();
+			var CT:ColorTransform = new ColorTransform(1, 1, 1, 1, (strongColor >> 16) & 0xFF, (strongColor >> 8) & 0xFF, strongColor & 0xFF);
+			currentNumber.bitmapData.colorTransform(currentNumber.bitmapData.rect, CT);
+			
+			currentNumber.filters = [
+				new GlowFilter(strongColor, .4, 12, 12, 4),
+				new GlowFilter(weakColor, .7, 6, 6, 1, 1, true),
+				new DropShadowFilter(2, 90, weakColor, 1, 0, 0, 1, 1, true),
+			];
+			
+			currentNumber.x = - 4 - currentNumber.width / 2;
+			currentNumber.y = - currentNumber.height / 2;
+			
+			addChild(currentNumber);
 		}
 	}
 	

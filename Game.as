@@ -20,7 +20,7 @@ package
 		
 		protected var _score:int = 0;
 		private var _displayedScore:Number = 0;
-		protected var _vitesse:int = 1;
+		protected var _vitesse:int;
 		protected var _stack:Stack;
 		protected var _lanes:Vector.<Lane>;
 		protected var _currentLane:int = 0;
@@ -51,7 +51,7 @@ package
 			_hud = new Hud_design();
 			view.addChild(_hud);
 			addToScore(0);
-			vitesse = 1;
+			vitesse = 0;
 		}
 		
 		/**
