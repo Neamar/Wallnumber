@@ -1,6 +1,8 @@
 package 
 {
 	import design.Lane_design;
+	import flash.display.Shape;
+	import flash.display.Sprite;
 	
 	/**
 	 * Une voie pour le jeu.
@@ -8,9 +10,9 @@ package
 	 * @author Neamar
 	 */
 	public final class Lane
-	{
+	{		
 		public var view:Lane_design = new Lane_design();
-		
+	
 		protected var _widthClosed:int = 0;
 
 		public function Lane()

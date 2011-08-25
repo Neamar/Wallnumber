@@ -3,6 +3,7 @@ package
 	import com.greensock.TweenLite;
 	import design.Game_design;
 	import design.Hud_design;
+	import design.Lane_design;
 	import flash.display.Stage;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
@@ -51,7 +52,9 @@ package
 			_hud = new Hud_design();
 			view.addChild(_hud);
 			addToScore(0);
-			vitesse = 80;
+			vitesse = 0;
+			
+			currentLane.closeALittleMore(400);
 		}
 		
 		/**
@@ -74,7 +77,7 @@ package
 				_stack.iterate(vitesse);
 			}
 			
-			if (Main.GAME_WIDTH - currentLane.getWidthClosed() - Main.LANE_OFFSETX < _stack.getX())
+			if (Main.GAME_WIDTH - currentLane.getWidthClosed() - Main.LANE_OFFSETX - Lane_design.STOP_WIDTH < _stack.getX())
 			{
 				//Perte d'une voie
 				currentLane.close('FAIL');

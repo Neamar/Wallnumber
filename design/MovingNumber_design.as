@@ -31,14 +31,7 @@ package design
 		[Embed(source = "../assets/numbers/9.png")] private static var Number9:Class;
 		protected static var numbers:Array = [Number0, Number1, Number2, Number3, Number4, Number5, Number6, Number7, Number8, Number9];
 		protected static var staticLaneNumber:int = 0;
-		
-		protected static var colors:Array = [
-			[0xff0000, 0xc96565],
-			[0x3b9114, 0x53d553],
-			[0x70419c, 0xb253b8],
-			[0x138faa, 0x53a5b7],
-			[0xe616df, 0xbd6bba]
-		];
+
 		
 		protected var laneNumber:int;
 		protected var currentNumber:Bitmap = null;
@@ -65,8 +58,8 @@ package design
 				removeChild(currentNumber);
 			}
 			
-			var strongColor:int = colors[laneNumber][0];
-			var weakColor:int = colors[laneNumber][1];
+			var strongColor:int = Main.laneColors[laneNumber][0];
+			var weakColor:int = Main.laneColors[laneNumber][1];
 			
 			currentNumber = new numbers[v]();
 			var CT:ColorTransform = new ColorTransform(1, 1, 1, 1, (strongColor >> 16) & 0xFF, (strongColor >> 8) & 0xFF, strongColor & 0xFF);

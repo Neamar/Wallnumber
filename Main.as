@@ -65,6 +65,19 @@
 		public static const LANE_OFFSETX:int = 80;
 		
 		/**
+		 * Les différentes couleurs de voies
+		 * 
+		 * La première est la majeure, la seconde couleur la mineure (plus laiteuse, utilisée pour les filtres)
+		 */
+		public static var laneColors:Array = [
+			[0xff0000, 0xc96565],
+			[0x3b9114, 0x53d553],
+			[0x70419c, 0xb253b8],
+			[0x138faa, 0x53a5b7],
+			[0xe616df, 0xbd6bba]
+		];
+		
+		/**
 		 * Le jeu en cours
 		 */
 		public static var currentGame:Game = null;
