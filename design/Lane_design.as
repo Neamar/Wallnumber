@@ -46,6 +46,8 @@ package design
 		
 		public function closeTo(v:int):void
 		{
+			v = Math.min(v, Main.GAME_WIDTH - Main.LANE_OFFSETX);
+			
 			while (stops.numChildren <= Math.ceil(v / STOP_WIDTH))
 			{
 				var newStop:Sprite = new Sprite();
@@ -74,10 +76,10 @@ package design
 				stops.addChild(newStop);
 			}
 			
-			if (v == Main.GAME_WIDTH)
+			if (v == Main.GAME_WIDTH - Main.LANE_OFFSETX)
 			{
-				//Optimiser les tweens
-				for (var i:int = 0; i < stops.numChildren; i++)
+				//Optimiser les tweens en conservant le premier "4fun"
+				for (var i:int = 1; i < stops.numChildren; i++)
 				{
 					TweenMax.killTweensOf((stops.getChildAt(i) as Sprite).getChildAt(0));
 				}

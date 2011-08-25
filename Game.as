@@ -52,9 +52,7 @@ package
 			_hud = new Hud_design();
 			view.addChild(_hud);
 			addToScore(0);
-			vitesse = 0;
-			
-			currentLane.closeALittleMore(400);
+			vitesse = 1;
 		}
 		
 		/**
