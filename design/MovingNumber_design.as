@@ -28,7 +28,7 @@ package design
 			[0x3b9114, 0x53d553],
 			[0x70419c, 0xb253b8],
 			[0x138faa, 0x53a5b7],
-			[0x39570d, 0x91bc53]
+			[0xe616df, 0xbd6bba]
 		];
 		
 		protected var tf:TextField = new TextField();
