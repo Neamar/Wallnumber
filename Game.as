@@ -52,7 +52,7 @@ package
 			_hud = new Hud_design();
 			view.addChild(_hud);
 			addToScore(0);
-			vitesse = 1;
+			vitesse = 0;
 		}
 		
 		/**

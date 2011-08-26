@@ -70,7 +70,7 @@
 		 * La première est la majeure, la seconde couleur la mineure (plus laiteuse, utilisée pour les filtres)
 		 */
 		public static var laneColors:Array = [
-			[0xff0000, 0xc96565],
+			[0xe42322, 0xf02626],
 			[0x3b9114, 0x53d553],
 			[0x70419c, 0xb253b8],
 			[0x138faa, 0x53a5b7],

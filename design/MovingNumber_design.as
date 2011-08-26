@@ -65,10 +65,11 @@ package design
 			var CT:ColorTransform = new ColorTransform(1, 1, 1, 1, (strongColor >> 16) & 0xFF, (strongColor >> 8) & 0xFF, strongColor & 0xFF);
 			currentNumber.bitmapData.colorTransform(currentNumber.bitmapData.rect, CT);
 			
+
 			currentNumber.filters = [
-				new GlowFilter(strongColor, .4, 12, 12, 4),
-				new GlowFilter(weakColor, .7, 6, 6, 1, 1, true),
-				new DropShadowFilter(2, 90, weakColor, 1, 0, 0, 1, 1, true),
+				new GlowFilter(weakColor, .5, 12, 12, 4),//Lueur externe
+				new GlowFilter(0xffffff, .4, 7, 7, 1, 1, true),//Lueur interne
+				new DropShadowFilter(2, 125, 0, .8, 0, 0, 1, 1, true),//Contour
 			];
 			
 			currentNumber.x = - 4 - currentNumber.width / 2;
