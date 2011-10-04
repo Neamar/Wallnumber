@@ -166,7 +166,6 @@ package
 		public function set vitesse(v:int):void
 		{
 			_vitesse = v;
-			_hud.setVitesse(v);
 		}
 	}
 	
