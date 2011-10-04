@@ -19,16 +19,16 @@ package design
 	public final class MovingNumber_design extends MovieClip 
 	{
 		[Embed(source = "../assets/car.png")] private static var CarBitmap:Class;
-		[Embed(source = "../assets/numbers/0.png")] private static var Number0:Class;
-		[Embed(source = "../assets/numbers/1.png")] private static var Number1:Class;
-		[Embed(source = "../assets/numbers/2.png")] private static var Number2:Class;
-		[Embed(source = "../assets/numbers/3.png")] private static var Number3:Class;
-		[Embed(source = "../assets/numbers/4.png")] private static var Number4:Class;
-		[Embed(source = "../assets/numbers/5.png")] private static var Number5:Class;
-		[Embed(source = "../assets/numbers/6.png")] private static var Number6:Class;
-		[Embed(source = "../assets/numbers/7.png")] private static var Number7:Class;
-		[Embed(source = "../assets/numbers/8.png")] private static var Number8:Class;
-		[Embed(source = "../assets/numbers/9.png")] private static var Number9:Class;
+		[Embed(source = "../assets/numbers/0.png")] public static var Number0:Class;
+		[Embed(source = "../assets/numbers/1.png")] public static var Number1:Class;
+		[Embed(source = "../assets/numbers/2.png")] public static var Number2:Class;
+		[Embed(source = "../assets/numbers/3.png")] public static var Number3:Class;
+		[Embed(source = "../assets/numbers/4.png")] public static var Number4:Class;
+		[Embed(source = "../assets/numbers/5.png")] public static var Number5:Class;
+		[Embed(source = "../assets/numbers/6.png")] public static var Number6:Class;
+		[Embed(source = "../assets/numbers/7.png")] public static var Number7:Class;
+		[Embed(source = "../assets/numbers/8.png")] public static var Number8:Class;
+		[Embed(source = "../assets/numbers/9.png")] public static var Number9:Class;
 		protected static var numbers:Array = [Number0, Number1, Number2, Number3, Number4, Number5, Number6, Number7, Number8, Number9];
 		protected static var staticLaneNumber:int = 0;
 

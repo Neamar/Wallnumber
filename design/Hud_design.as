@@ -10,7 +10,8 @@ package design
 	 */
 	public final class Hud_design extends MovieClip
 	{
-		protected var tf:TextField = new TextField();
+		protected var scoreTf:TextField = new TextField();
+		protected var vitesseTf:TextField = new TextField();
 		protected var _score:int = 0;
 		protected var _vitesse:int = 0;
 		
@@ -18,27 +19,29 @@ package design
 		{
 			this.y = -Main.HUD_HEIGHT;
 			
-			addChild(tf);
-			tf.textColor = 0;
-			tf.selectable = false;
-			tf.autoSize = TextFieldAutoSize.LEFT;
-		}
-
-		protected function update():void
-		{
-			tf.text = 'Score : ' + _score + ' ; vitesse : ' + _vitesse;
+			addChild(scoreTf);
+			addChild(vitesseTf);
+			
+			scoreTf.textColor = vitesseTf.textColor = 0;
+			scoreTf.selectable = vitesseTf.selectable = false;
+			scoreTf.autoSize = TextFieldAutoSize.LEFT;
+			vitesseTf.autoSize = TextFieldAutoSize.RIGHT;
+			
+			scoreTf.scaleX = scoreTf.scaleY = 4;
+			vitesseTf.scaleX = vitesseTf.scaleY = 4;
 		}
 		
 		public function setScore(value:int):void 
 		{
 			_score = value;
-			update()
+			scoreTf.text = _score.toString();
 		}
 		
 		public function setVitesse(value:int):void 
 		{
 			_vitesse = value;
-			update();
+			vitesseTf.text =  _vitesse.toString();
+			vitesseTf.x = Main.GAME_WIDTH - vitesseTf.width;
 		}
 		
 	}
