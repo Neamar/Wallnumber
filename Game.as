@@ -19,8 +19,7 @@ package
 		
 		public var view:Game_design = new Game_design();
 		
-		protected var _score:int = 0;
-		private var _displayedScore:Number = 0;
+		protected var _score:Number = 0;
 		protected var _vitesse:int;
 		protected var _stack:Stack;
 		protected var _lanes:Vector.<Lane>;
@@ -51,7 +50,7 @@ package
 			
 			_hud = new Hud_design();
 			view.addChild(_hud);
-			addToScore(0);
+			_hud.setScore(0);
 			vitesse = 1;
 		}
 		
@@ -61,15 +60,13 @@ package
 		 */
 		public function onFrame(e:Event = null):void
 		{
-			//Score affiché
 			_frameNumber = (_frameNumber + 1) % Main.FRAME_RATE;
 			
-			//Chaque seconde, le score augmente de la vitesse actuelle
-			if (_frameNumber == 0)
-			{
-				addToScore(vitesse);
-			}
+			//Chaque frame, le score augmente de la vitesse actuelle
+			_score += vitesse / 10;
+			_hud.setScore(_score);
 			
+			//Déplacer les chariots
 			if (_frameNumber % 3)
 			{
 				_stack.iterate(vitesse);
@@ -89,6 +86,10 @@ package
 				{
 					//Fin du jeu !
 					endGame();
+				}
+				else
+				{
+					_hud.changeColor(_currentLane);
 				}
 			}
 		}
@@ -147,20 +148,7 @@ package
 		 */
 		public function get score():int { return _score; }
 		
-		public function addToScore(v:int):void
-		{
-			_score += v;
-			TweenLite.to(this, 1, { displayedScore:_score } );
-		}
-		
 		public function get currentLane():Lane { return _lanes[_currentLane]; }
-		
-		public function get displayedScore():Number { return _displayedScore; }
-		public function set displayedScore(value:Number):void 
-		{
-			_displayedScore = value;
-			_hud.setScore(_displayedScore);
-		}
 		
 		public function get vitesse():int { return _vitesse; }
 		public function set vitesse(v:int):void
